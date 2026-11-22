@@ -2,9 +2,9 @@
 
 @section('content')
 
-    <button onclick="history.back()" class="btn btn-secondary btn-sm mt-4">Back</button>
+    <a href="{{ route('cities.country', $cityInfo->country_id) }}" class="btn btn-secondary btn-sm mt-4">Back</a>
 
-    <h2 class="mt-4 mb-3">Edit {{ $cityInfo->name }}</h2>
+    <h3 class="mt-4 mb-3">Edit {{ $cityInfo->name }}</h3>
 
     @if ($cityInfo->photo)
         <img src="{{ asset('storage/' . $cityInfo->photo) }}" alt="" class="country-photo mb-3">

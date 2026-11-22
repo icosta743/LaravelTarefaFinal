@@ -2,9 +2,9 @@
 
 @section('content')
 
-    <button onclick="history.back()" class="btn btn-secondary mt-4">Back</button>
+    <a href="{{ route('cities.country', $countryInfo->id) }}" class="btn btn-secondary btn-sm mt-4">Back</a>
 
-    <h1 class="mt-3">Add city to {{ $countryInfo->name }}</h1>
+    <h3 class="mt-3">Add city to {{ $countryInfo->name }}</h3>
 
     <form method="POST" action="{{ route('cities.store') }}" enctype="multipart/form-data">
         @csrf

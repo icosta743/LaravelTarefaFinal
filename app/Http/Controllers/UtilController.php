@@ -10,4 +10,10 @@ class UtilController extends Controller
 
         return view('home');
     }
+
+    public function pageNotFound() {
+        return view('fallback');
+        
+    }
+
 }

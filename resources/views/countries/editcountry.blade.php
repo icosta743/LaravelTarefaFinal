@@ -2,10 +2,10 @@
 
 @section('content')
 
-    <button onclick="history.back()" class="btn btn-secondary mt-4">Back</button>
+    <a href="{{ route('countries.all') }}" class="btn btn-secondary btn-sm mt-4">Back</a>
 
-    <h1 class="mt-3">Edit {{ $countryInfo->name }}</h1>
-
+    <h3 class="mt-3">Edit {{ $countryInfo->name }}</h3>
+    
     @if ($countryInfo->photo)
         <img src="{{ asset('storage/' . $countryInfo->photo) }}" alt="" class="country-photo mb-3">
     @endif

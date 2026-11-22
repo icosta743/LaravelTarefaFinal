@@ -63,3 +63,7 @@ Route::get('/restore-countries/{id}', [TrashController::class, 'restoreCountry']
 
 //rota de restaurar cidades
 Route::get('/restore-cities/{id}', [TrashController::class, 'restoreCity'])->name('cities.restore')->middleware('auth');
+
+
+//rota de fallback (quando a página não existe)
+Route::fallback([UtilController::class, 'pageNotFound']);
