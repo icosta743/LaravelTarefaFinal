@@ -1,7 +1,9 @@
 @extends('layouts.fo')
 
 @section('content')
-    <h2 class="mt-5 mb-4">Register</h2>
+    <h3 class="mt-5 mb-4">Register</h3>
+
+    {{-- formulário de registo (tratado pelo Fortify) --}}
     <form method="POST" action="{{ route('register') }}">
         @csrf
 
@@ -29,6 +31,7 @@
             <p>Invalid password</p>
         @enderror
 
+        {{-- tem de ser igual à password (regra confirmed) --}}
         <div class="mb-3">
             <label class="form-label">Confirm password</label>
             <input required type="password" name="password_confirmation" class="form-control">

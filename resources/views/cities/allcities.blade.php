@@ -2,14 +2,17 @@
 
 @section('content')
 
+    {{-- nome do país --}}
     <h3 class="mt-5 mb-4">{{ $countryInfo->name }}</h3>
 
+    {{-- mensagem de sucesso depois de adicionar ou editar --}}
     @if (session('message'))
         <div class="alert alert-success">
             {{ session('message') }}
         </div>
     @endif
 
+    {{-- botão de adicionar, só para o admin --}}
     @auth
         @if (Auth::user()->user_type == \App\Models\User::TYPE_ADMIN)
             <a href="{{ route('cities.add', $countryInfo->id) }}" class="btn btn-olive btn-sm mb-4">Add city</a>
@@ -29,10 +32,13 @@
         </thead>
 
         <tbody>
+            {{-- percorre as cidades do país --}}
             @foreach ($cities as $city)
                 <tr>
+                    {{-- numeração 1, 2, 3... (os ids podem ter saltos) --}}
                     <th scope="row">{{ $loop->iteration }}</th>
                     <td>
+                        {{-- mostra a foto só se existir --}}
                         @if ($city->photo)
                             <img src="{{ asset('storage/' . $city->photo) }}" alt="" class="country-photo">
                         @endif
@@ -41,8 +47,10 @@
                     <td>{{ $city->local_food }}</td>
                     <td>{{ $city->visited_at }}</td>
                     <td>
+                        {{-- editar: qualquer utilizador com login --}}
                         @auth
                             <a href="{{ route('cities.edit', $city->id) }}" class="btn btn-info btn-sm">Edit</a>
+                            {{-- apagar: só o admin, com confirmação --}}
                             @if (Auth::user()->user_type == \App\Models\User::TYPE_ADMIN)
                                 <a href="{{ route('cities.delete', $city->id) }}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete {{ $city->name }}?')">Delete</a>
                             @endif
@@ -53,6 +61,7 @@
         </tbody>
     </table>
 
+    {{-- voltar à lista de países --}}
     <a href="{{ route('countries.all') }}" class="btn btn-secondary btn-sm mt-3 mb-5">Back</a>
 
 @endsection

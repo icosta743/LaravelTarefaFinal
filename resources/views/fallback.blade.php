@@ -2,6 +2,7 @@
 
 @section('content')
 
+    {{-- página mostrada quando a rota não existe --}}
     <div class="text-center mt-5 pt-5">
 
         <h3 class="mt-5">Page not found.</h3>

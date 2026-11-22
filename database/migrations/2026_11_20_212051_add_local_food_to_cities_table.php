@@ -7,17 +7,18 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations.
+     * Corre a migração (acrescenta a coluna local_food).
      */
     public function up(): void
     {
+        //comida típica, a seguir à coluna name
         Schema::table('cities', function (Blueprint $table) {
             $table->string('local_food')->nullable()->after('name');
         });
     }
 
     /**
-     * Reverse the migrations.
+     * Reverte a migração (apaga a coluna).
      */
     public function down(): void
     {

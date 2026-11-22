@@ -13,7 +13,7 @@ class ResetUserPassword implements ResetsUserPasswords
     use PasswordValidationRules;
 
     /**
-     * Validate and reset the user's forgotten password.
+     * Valida e redefine a password esquecida do utilizador.
      *
      * @param  array<string, string>  $input
      *
@@ -21,10 +21,12 @@ class ResetUserPassword implements ResetsUserPasswords
      */
     public function reset(User $user, array $input): void
     {
+        //validar a nova password
         Validator::make($input, [
             'password' => $this->passwordRules(),
         ])->validate();
 
+        //guardar a nova password encriptada
         $user->forceFill([
             'password' => Hash::make($input['password']),
         ])->save();

@@ -14,15 +14,15 @@ use Illuminate\Notifications\Notifiable;
 #[Hidden(['password', 'remember_token'])]
 class User extends Authenticatable
 {
-
+    //tipos de utilizador (coluna user_type)
     const TYPE_ADMIN = 1;
     const TYPE_GENERIC_USER = 8;
-    
+
     /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable;
 
     /**
-     * Get the attributes that should be cast.
+     * Define como alguns campos são convertidos.
      *
      * @return array<string, string>
      */

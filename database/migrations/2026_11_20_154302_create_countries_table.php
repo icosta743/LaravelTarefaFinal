@@ -7,20 +7,21 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations.
+     * Corre a migração (cria a tabela countries).
      */
     public function up(): void
     {
         Schema::create('countries', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            //caminho da foto (pode ficar vazio)
             $table->string('photo')->nullable();
             $table->timestamps();
         });
     }
 
     /**
-     * Reverse the migrations.
+     * Reverte a migração (apaga a tabela).
      */
     public function down(): void
     {

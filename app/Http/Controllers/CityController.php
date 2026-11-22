@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Storage;
 
 class CityController extends Controller
 {
+    //cidades de um país
     public function citiesByCountry(int $id) {
 
         $countryInfo = Country::where('id', $id)->first();
@@ -20,7 +21,7 @@ class CityController extends Controller
         return view('cities.allcities', compact('countryInfo', 'cities'));
     }
 
-
+    //apagar cidade
     public function deleteCities(int $id) {
 
         City::where('id', $id)->delete();
@@ -28,14 +29,15 @@ class CityController extends Controller
         return back();
     }
 
-        public function addCities(int $id) {
+    //página de adicionar cidade
+    public function addCities(int $id) {
 
         $countryInfo = Country::where('id', $id)->select('id', 'name')->first();
 
         return view('cities.addcity', compact('countryInfo'));
     }
 
-
+    //guardar cidade nova
     public function storeCity(Request $request) {
 
         //validar os dados no servidor
@@ -64,7 +66,7 @@ class CityController extends Controller
         return redirect()->route('cities.country', $request->country_id)->with('message', 'City added successfully!');
     }
 
-
+    //página de editar cidade
     public function editCities(int $id) {
 
         $cityInfo = City::where('id', $id)
@@ -74,9 +76,10 @@ class CityController extends Controller
         return view('cities.editcity', compact('cityInfo'));
     }
 
-
+    //atualizar cidade
     public function updateCity(Request $request) {
 
+        //validar os dados no servidor
         $request->validate([
             'name' => 'required|max:50',
             'local_food' => 'max:50',
@@ -89,6 +92,7 @@ class CityController extends Controller
             $photo = Storage::putFile('cityPhotos', $request->photo);
         }
 
+        //se não houver foto nova, mantém a antiga
         City::where('id', $request->id)->update([
             'name' => $request->name,
             'local_food' => $request->local_food,
@@ -98,8 +102,4 @@ class CityController extends Controller
 
         return redirect()->route('cities.country', $request->country_id)->with('message', 'City updated successfully!');
     }
-
-
-
-
 }

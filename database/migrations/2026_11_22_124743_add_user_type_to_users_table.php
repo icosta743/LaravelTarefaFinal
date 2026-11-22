@@ -7,17 +7,18 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations.
+     * Corre a migração (acrescenta a coluna user_type).
      */
     public function up(): void
     {
+        //tipo de utilizador: 1 = admin, 8 = utilizador normal (por defeito)
         Schema::table('users', function (Blueprint $table) {
             $table->integer('user_type')->default(8)->after('email');
         });
     }
 
     /**
-     * Reverse the migrations.
+     * Reverte a migração (apaga a coluna).
      */
     public function down(): void
     {
@@ -25,4 +26,5 @@ return new class extends Migration
             $table->dropColumn('user_type');
         });
     }
+    
 };

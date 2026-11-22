@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 
 class TrashController extends Controller
 {
+    //página da lixeira
     public function allTrash() {
 
         //países que estão na lixeira
@@ -25,15 +26,16 @@ class TrashController extends Controller
         return view('backoffice.trash', compact('countries', 'cities'));
     }
 
+    //restaurar o país e as suas cidades
     public function restoreCountry(int $id) {
 
-        //restaurar o país e as suas cidades
         Country::onlyTrashed()->where('id', $id)->restore();
         City::onlyTrashed()->where('country_id', $id)->restore();
 
         return redirect()->route('trash.all')->with('message', 'Country restored successfully!');
     }
 
+    //restaurar uma cidade
     public function restoreCity(int $id) {
 
         City::onlyTrashed()->where('id', $id)->restore();

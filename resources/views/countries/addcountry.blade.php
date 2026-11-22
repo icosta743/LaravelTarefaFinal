@@ -2,8 +2,12 @@
 
 @section('content')
 
-    <h1 class="mt-5">Add country</h1>
+    {{-- voltar à lista de países --}}
+    <a href="{{ route('countries.all') }}" class="btn btn-secondary btn-sm mt-4">Back</a>
 
+    <h3 class="mt-3">Add country</h3>
+
+    {{-- enctype: necessário para enviar ficheiros --}}
     <form method="POST" action="{{ route('countries.store') }}" enctype="multipart/form-data">
         @csrf
 
@@ -15,6 +19,7 @@
             <p>Invalid name</p>
         @enderror
 
+        {{-- só aceita imagens --}}
         <div class="mb-3">
             <label class="form-label">Photo</label>
             <input type="file" name="photo" accept="image/*" class="form-control">

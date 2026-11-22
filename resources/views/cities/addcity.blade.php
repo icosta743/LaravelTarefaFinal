@@ -2,13 +2,16 @@
 
 @section('content')
 
+    {{-- voltar às cidades do país --}}
     <a href="{{ route('cities.country', $countryInfo->id) }}" class="btn btn-secondary btn-sm mt-4">Back</a>
 
     <h3 class="mt-3">Add city to {{ $countryInfo->name }}</h3>
 
+    {{-- enctype necessário para enviar ficheiros --}}
     <form method="POST" action="{{ route('cities.store') }}" enctype="multipart/form-data">
         @csrf
 
+        {{-- id do país, escondido, para ligar a cidade ao país --}}
         <input type="hidden" name="country_id" value="{{ $countryInfo->id }}">
 
         <div class="mb-3">
@@ -35,6 +38,7 @@
             <p>Invalid date</p>
         @enderror
 
+        {{-- só aceita imagens --}}
         <div class="mb-3">
             <label class="form-label">Photo</label>
             <input type="file" name="photo" accept="image/*" class="form-control">

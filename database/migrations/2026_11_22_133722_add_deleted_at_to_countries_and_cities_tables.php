@@ -7,10 +7,11 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations.
+     * Corre a migração (acrescenta a coluna deleted_at para a lixeira).
      */
     public function up(): void
     {
+        //softDeletes cria a coluna deleted_at
         Schema::table('countries', function (Blueprint $table) {
             $table->softDeletes();
         });
@@ -21,7 +22,7 @@ return new class extends Migration
     }
 
     /**
-     * Reverse the migrations.
+     * Reverte a migração (apaga a coluna deleted_at).
      */
     public function down(): void
     {
