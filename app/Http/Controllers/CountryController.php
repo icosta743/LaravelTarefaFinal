@@ -18,12 +18,11 @@ class CountryController extends Controller
     }
 
     protected function getAllCountries() {
-        $countries = Country::leftJoin('cities', 'countries.id', '=', 'cities.country_id')
-            ->select(
-                'countries.id',
-                'countries.name',
-                'countries.photo'
-            )
+        $countries = Country::leftJoin('cities', function ($join) {
+                $join->on('countries.id', '=', 'cities.country_id')
+                    ->whereNull('cities.deleted_at');
+            })
+            ->select('countries.id', 'countries.name', 'countries.photo')
             ->selectRaw('count(cities.id) as cities_count')
             ->groupBy('countries.id', 'countries.name', 'countries.photo')
             ->get();
@@ -31,7 +30,7 @@ class CountryController extends Controller
         return $countries;
     }
 
-        public function deleteCountries(int $id) {
+    public function deleteCountries(int $id) {
 
         City::where('country_id', $id)->delete();
         Country::where('id', $id)->delete();
@@ -67,7 +66,7 @@ class CountryController extends Controller
         return redirect()->route('countries.all')->with('message', 'Country added successfully!');
     }
 
-    
+
         public function editCountries(int $id) {
 
         $countryInfo = Country::where('id', $id)->select('id', 'name', 'photo')->first();

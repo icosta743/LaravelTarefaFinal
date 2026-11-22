@@ -46,7 +46,8 @@
                         @auth
                             <a href="{{ route('cities.edit', $city->id) }}" class="btn btn-info">Edit</a>
                             @if (Auth::user()->user_type == \App\Models\User::TYPE_ADMIN)
-                                <a href="{{ route('cities.delete', $city->id) }}" class="btn btn-danger">Delete</a>
+                                <a href="{{ route('cities.delete', $city->id) }}" class="btn btn-danger" onclick="return confirm
+                                ('Are you sure you want to delete {{ $city->name }}?')">Delete</a>
                             @endif
                         @endauth
                     </td>

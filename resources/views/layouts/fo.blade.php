@@ -36,6 +36,13 @@
                     <a class="nav-link" href="{{ route('dashboard') }}">Dashboard</a>
                     </li>
                     @endauth
+                    @auth
+                        @if (Auth::user()->user_type == \App\Models\User::TYPE_ADMIN)
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('trash.all') }}">Trash</a>
+                            </li>
+                        @endif
+                    @endauth
                 </ul>
 
                 @auth

@@ -5,6 +5,7 @@ use App\Http\Controllers\UtilController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\TrashController;
 
 //rota de homepage
 Route::get('/', [UtilController::class, 'loadHomepage'])->name('home');
@@ -52,3 +53,13 @@ Route::put('/update-cities', [CityController::class, 'updateCity'])->name('citie
 
 //rota do dashboard (só para users autenticados)
 Route::get('/dashboard', [DashboardController::class, 'loadDashboard'])->name('dashboard')->middleware('auth');
+
+//rotas da lixeira (protegidas, só para users autenticados)
+//rota da página lixeira
+Route::get('/trash', [TrashController::class, 'allTrash'])->name('trash.all')->middleware('auth');
+
+//rota de restaurar países
+Route::get('/restore-countries/{id}', [TrashController::class, 'restoreCountry'])->name('countries.restore')->middleware('auth');
+
+//rota de restaurar cidades
+Route::get('/restore-cities/{id}', [TrashController::class, 'restoreCity'])->name('cities.restore')->middleware('auth');
