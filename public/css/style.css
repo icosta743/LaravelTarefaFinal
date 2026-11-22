@@ -1,0 +1,47 @@
+/* Beyond Routes */
+
+body {
+    background-color: #F7F5EF;
+    color: #3F4D3D;
+    font-family: 'Inter', sans-serif;
+}
+
+h1, h2, h3, h4, .navbar-brand {
+    font-family: 'Playfair Display', serif;
+    color: #3F4D3D;
+}
+
+.navbar {
+    background-color: #F7F5EF;
+    border-bottom: 1px solid #E9E1D6;
+}
+
+.brand-subtitle {
+    font-size: 13px;
+    letter-spacing: 1px;
+    color: #3F4D3D;
+}
+
+.btn-olive {
+    background-color: #7A8F6A;
+    color: #FFFFFF;
+}
+
+.btn-olive:hover {
+    background-color: #3F4D3D;
+    color: #FFFFFF;
+}
+
+.country-photo {
+    width: 80px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.signature {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: #7A8F6A;
+}
