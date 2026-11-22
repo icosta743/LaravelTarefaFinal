@@ -2,9 +2,7 @@
 
 @section('content')
 
-    <a href="{{ route('countries.all') }}" class="btn btn-secondary btn-sm mt-4">Back</a>
-
-    <h2 class="mt-4 mb-4">{{ $countryInfo->name }}</h2>
+    <h3 class="mt-5 mb-4">{{ $countryInfo->name }}</h3>
 
     @if (session('message'))
         <div class="alert alert-success">
@@ -44,10 +42,9 @@
                     <td>{{ $city->visited_at }}</td>
                     <td>
                         @auth
-                            <a href="{{ route('cities.edit', $city->id) }}" class="btn btn-info">Edit</a>
+                            <a href="{{ route('cities.edit', $city->id) }}" class="btn btn-info btn-sm">Edit</a>
                             @if (Auth::user()->user_type == \App\Models\User::TYPE_ADMIN)
-                                <a href="{{ route('cities.delete', $city->id) }}" class="btn btn-danger" onclick="return confirm
-                                ('Are you sure you want to delete {{ $city->name }}?')">Delete</a>
+                                <a href="{{ route('cities.delete', $city->id) }}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete {{ $city->name }}?')">Delete</a>
                             @endif
                         @endauth
                     </td>
@@ -55,5 +52,7 @@
             @endforeach
         </tbody>
     </table>
+
+    <a href="{{ route('countries.all') }}" class="btn btn-secondary btn-sm mt-3 mb-5">Back</a>
 
 @endsection

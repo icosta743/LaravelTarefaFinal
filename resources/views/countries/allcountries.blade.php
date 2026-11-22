@@ -39,12 +39,11 @@
                     <td>{{ $country->name }}</td>
                     <td>{{ $country->cities_count }}</td>
                     <td>
-                        <a href="{{ route('cities.country', $country->id) }}" class="btn btn-olive">View cities</a>
+                        <a href="{{ route('cities.country', $country->id) }}" class="btn btn-olive btn-sm">View cities</a>
                         @auth
-                            <a href="{{ route('countries.edit', $country->id) }}" class="btn btn-info">Edit</a>
+                            <a href="{{ route('countries.edit', $country->id) }}" class="btn btn-info btn-sm">Edit</a>
                             @if (Auth::user()->user_type == \App\Models\User::TYPE_ADMIN)
-                                <a href="{{ route('countries.delete', $country->id) }}" class="btn btn-danger" onclick="return confirm
-                                ('Are you sure you want to delete {{ $country->name }}?')">Delete</a>
+                                <a href="{{ route('countries.delete', $country->id) }}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete {{ $country->name }}?')">Delete</a>
                             @endif
                         @endauth
                     </td>
