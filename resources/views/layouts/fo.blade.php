@@ -20,7 +20,7 @@
     {{-- layout master: este menu aparece em todas as páginas que fazem @extends('layouts.fo') --}}
     <nav class="navbar navbar-expand-lg">
         <div class="container">
-            {{-- nome do site, leva à homepage --}}
+            {{-- nome do site, leva a homepage --}}
             <a class="navbar-brand" href="{{ route('home') }}">Beyond Routes</a>
             {{-- botão do menu em ecrãs pequenos (telemóvel) --}}
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"

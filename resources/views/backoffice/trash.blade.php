@@ -2,6 +2,7 @@
 
 @section('content')
 
+    {{-- página da lixeira (extra: soft deletes), aberta pelo botão Trash do dashboard --}}
     <h3 class="mt-5 mb-4">Trash</h3>
 
     {{-- mensagem de sucesso depois de restaurar --}}
