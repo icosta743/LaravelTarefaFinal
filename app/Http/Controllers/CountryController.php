@@ -61,7 +61,8 @@ class CountryController extends Controller
         return view('countries.addcountry');
     }
 
-    //guardar país novo (rota countries.store)
+    //guardar país novo (rota post - countries.store)
+    // request é por onde chegam à função os dados que o formulário enviou.
     public function storeCountry(Request $request) {
 
         //validar os dados no servidor
@@ -92,7 +93,7 @@ class CountryController extends Controller
 
         //vai buscar o país para preencher o formulário
         $countryInfo = Country::where('id', $id)->select('id', 'name', 'photo')->first();
-
+        // compact envia variáveis do controller para a view.
         return view('countries.editcountry', compact('countryInfo'));
     }
 
