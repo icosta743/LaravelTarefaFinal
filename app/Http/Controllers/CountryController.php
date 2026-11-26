@@ -62,7 +62,7 @@ class CountryController extends Controller
     }
 
     //guardar país novo (rota post - countries.store)
-    // request é por onde chegam à função os dados que o formulário enviou.
+    // $request é por onde chegam à função os dados que o formulário enviou.
     public function storeCountry(Request $request) {
 
         //validar os dados no servidor

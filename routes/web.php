@@ -54,6 +54,7 @@ Route::put('/update-cities', [CityController::class, 'updateCity'])->name('citie
 //rota do dashboard (só para users autenticados)
 Route::get('/dashboard', [DashboardController::class, 'loadDashboard'])->name('dashboard')->middleware('auth');
 
+
 //rotas da lixeira (protegidas, só para users autenticados)
 //rota da página lixeira
 Route::get('/trash', [TrashController::class, 'allTrash'])->name('trash.all')->middleware('auth');
